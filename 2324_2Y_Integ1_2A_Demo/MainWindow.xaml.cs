@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,8 @@ namespace _2324_2Y_Integ1_2A_Demo
             btnMult.Content = "x";
             btnDiv.Content = "/";
             btnEnter.Content = "=";
+            btnSquared.Content = "^";
+            btnCleared.Content = "Clear";
         }
 
         private void numberEnter(int x)
@@ -65,9 +68,13 @@ namespace _2324_2Y_Integ1_2A_Demo
                 num2 = int.Parse(input);
 
             tbCalc.Text = input;
+
+          
+            
         }
 
         #region KeypadEvents
+       
         private void btn9_Click(object sender, RoutedEventArgs e)
         {
             numberEnter(9);
@@ -151,10 +158,25 @@ namespace _2324_2Y_Integ1_2A_Demo
         {
             ope = 3;
             tbCalc.Text = "";
-        } 
-        #endregion
+        }
+        private void btnSquared_Click(object sender, RoutedEventArgs e)
+        {
+            ope = 4;
+            int squared = num1 *= num1;
+            tbCalc.Text = squared.ToString();
+            tbCalc.Text = "";
+        }
+        private void btnCleared_Click(object sender, RoutedEventArgs e)
+        {
+            ope = 5;
+            int cleared = num1 | num1;
+            tbCalc.Text = cleared.ToString();
+            tbCalc.Text = "";
+        }
 
-        private void btnEnter_Click(object sender, RoutedEventArgs e)
+            #endregion
+
+            private void btnEnter_Click(object sender, RoutedEventArgs e)
         {
             switch(ope)
             {
@@ -170,6 +192,8 @@ namespace _2324_2Y_Integ1_2A_Demo
                 case 3:
                     num1 /= num2;
                     break;
+
+            
             }
             
             if(ope > -1)
