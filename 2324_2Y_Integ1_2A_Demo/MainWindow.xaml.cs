@@ -26,11 +26,11 @@ namespace _2324_2Y_Integ1_2A_Demo
         int num1 = 0;
         int num2 = 0;
         int ope = -1;
-
+      
         public MainWindow()
         {
             InitializeComponent();
-
+            
             btnNums[0] = btn0;
             btnNums[1] = btn1;
             btnNums[2] = btn2;
@@ -50,8 +50,9 @@ namespace _2324_2Y_Integ1_2A_Demo
             btnMult.Content = "x";
             btnDiv.Content = "/";
             btnEnter.Content = "=";
-            btnSquared.Content = "^";
+            btnSquared.Content = "^2";
             btnCleared.Content = "Clear";
+           
         }
 
         private void numberEnter(int x)
@@ -162,15 +163,10 @@ namespace _2324_2Y_Integ1_2A_Demo
         private void btnSquared_Click(object sender, RoutedEventArgs e)
         {
             ope = 4;
-            int squared = num1 *= num1;
-            tbCalc.Text = squared.ToString();
             tbCalc.Text = "";
         }
         private void btnCleared_Click(object sender, RoutedEventArgs e)
         {
-            ope = 5;
-            int cleared = num1 | num1;
-            tbCalc.Text = cleared.ToString();
             tbCalc.Text = "";
         }
 
@@ -192,7 +188,9 @@ namespace _2324_2Y_Integ1_2A_Demo
                 case 3:
                     num1 /= num2;
                     break;
-
+                case 4:
+                    num1 *= num1;
+                    break;
             
             }
             
